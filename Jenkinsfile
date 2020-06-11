@@ -9,7 +9,7 @@ pipeline {
       stage('build image') {
          steps {
             sh "docker image ls"
-            sh "docker build desiby/docker-nodeapp "
+            sh "docker build -t desiby/docker-nodeapp ."
             sh "docker docker image ls"
          }
       }
