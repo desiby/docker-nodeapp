@@ -6,5 +6,14 @@ pipeline {
             echo "$GIT_BRANCH"
          }
       }
+      stage('Build Docker image') {
+         steps {
+            sh "docker image ls"
+            sh "cd nodeapp"
+            sh "docker build -t desiby/docker-nodeapp ."
+            sh "docker image ls"
+            sh "cd .."
+         }
+      }
    }
 }
