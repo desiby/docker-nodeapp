@@ -13,5 +13,10 @@ pipeline {
             sh "docker image ls"
          }
       }
+      stage('Run App in Container') {
+         steps {
+            sh "docker run -p 50000:9000 desiby/docker-nodeapp"
+         }
+      }
    }
 }
