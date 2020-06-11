@@ -6,16 +6,11 @@ pipeline {
             echo "$GIT_BRANCH"
          }
       }
-      stage('Build Docker image') {
+      stage('remove all') {
          steps {
-            sh "docker image ls"
-            sh "docker build -t desiby/docker-nodeapp ."
-            sh "docker image ls"
-         }
-      }
-      stage('Run App in Container') {
-         steps {
-            sh "docker run -p 50000:9000 desiby/docker-nodeapp"
+            sh "docker stop $(docker ps -aq)"
+            sh "docker rm $(docker ps -aq)"
+            sh "docker rmi $(docker images -q)"
          }
       }
    }
