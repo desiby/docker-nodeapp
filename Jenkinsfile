@@ -2,13 +2,11 @@ node {
       checkout scm
       def image
    
-      stage("build image"){  
-          try{
+      stage("build image"){
+          try{  
             image = docker.build 'desiby/docker-nodeapp'
-          }
-          catch (exc){
-             echo "something failed"
-             throw
+          }catch (exc){
+             echo exc
           }
       }
 
@@ -19,8 +17,7 @@ node {
                }
          }
          catch (exc){
-            echo "something failed, couldn't push"
-            throw
+            echo exc
          }
       }
 }
