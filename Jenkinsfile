@@ -1,7 +1,6 @@
 pipeline {
    agent { dockerfile true }
-     stages { 
-
+   stages { 
       stage('build image') {
          steps {
             sh 'node --version'
