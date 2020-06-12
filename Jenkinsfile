@@ -5,7 +5,8 @@ node {
       stage("build image"){  
           try{
             image = docker.build 'desiby/docker-nodeapp'
-          }catch (exec){
+          }
+          catch (exc){
              echo "something failed"
              throw
           }
@@ -16,8 +17,10 @@ node {
                docker.withRegistry('https://index.docker.io/v1/', 'dockerhub'){  
                      image.push()
                }
-         }catch (exec){
-            "something failed, couldn't push"
+         }
+         catch (exc){
+            echo "something failed, couldn't push"
+            throw
          }
       }
 }
