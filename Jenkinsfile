@@ -1,12 +1,10 @@
 pipeline {
-   agent any
+   agent { dockerfile true }
      stages { 
 
       stage('build image') {
          steps {
-            sh "docker image ls"
-            sh "docker build -t desiby/docker-nodeapp ."
-            sh "docker image ls"
+            sh 'node --version'
          }
       }
      }
