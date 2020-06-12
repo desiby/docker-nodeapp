@@ -1,10 +1,14 @@
 node {
-      stage("build and push image"){
-        docker.withRegistry([ credentialsId: "dockerhub", url: "https://index.docker.io/v1"]){  
-          def image = docker.build 'desiby/docker-nodeapp:1.0'
+      checkout scm
+      def image
+      
+      stage("build image"){  
+            image = docker.build 'desiby/docker-nodeapp'
+      }
+
+      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub'){  
             image.push()
         }
-      }
         
         post {
          success {
