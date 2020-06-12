@@ -4,8 +4,6 @@ pipeline {
 
       stage('build image') {
          steps {
-            sh "chmod +x cleanup.sh"
-            sh "./cleanup.sh"
             sh "docker image ls"
             sh "docker build -t desiby/docker-nodeapp ."
             sh "docker image ls"
