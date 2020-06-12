@@ -1,4 +1,5 @@
 pipeline {
+     agent any
      node{
         def image = docker.build 'desiby/docker-nodeapp'
             image.push()
@@ -6,7 +7,7 @@ pipeline {
       stages { 
          stage('build image') {
             steps {
-               
+               sh "node --version"
             }
          }
       }
