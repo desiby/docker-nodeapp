@@ -10,6 +10,7 @@ pipeline {
             sh "docker image ls"
          }
       }
+     }
       post {
          success {
             echo "build succedeed :)"
@@ -18,5 +19,4 @@ pipeline {
             echo "build failed :("
          }
       }
-   }
 }
