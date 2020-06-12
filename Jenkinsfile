@@ -1,13 +1,15 @@
 pipeline {
-     agent any
-   stages { 
-      stage('build image') {
-         steps {
-            def image = docker.build 'desiby/docker-nodeapp'
-            image.push
+     node{
+        def image = docker.build 'desiby/docker-nodeapp'
+            image.push()
+     }
+      stages { 
+         stage('build image') {
+            steps {
+               
+            }
          }
       }
-     }
       post {
          success {
             echo "build succedeed :)"
