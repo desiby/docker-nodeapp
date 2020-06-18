@@ -28,18 +28,5 @@ node {
             echo exc
          }
       }
-      
-      stage("deploy to kubernetes"){
-          try{  
-            
-              kubernetesDeploy( 
-                    configs: '**/*.yaml',
-                    kubeconfigId: 'kube',
-                )  
-                
-          }catch (exc){
-             echo exc
-          }
-      }
 }
       
