@@ -28,5 +28,23 @@ node {
             echo exc
          }
       }
+      
+      stage("deploy to kubernetes"){
+          try{  
+            
+              kubernetesDeploy( 
+                    configs: '**/*.yaml',
+                    dockerCredentials: [[credentialsId: 'dockerhub']],
+                    kubeConfig: [path: ''],
+                    kubeconfigId: 'kube',
+                    textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://'],
+                    secretName: '', 
+                    ssh: [sshCredentialsId: '*', sshServer: '']
+                )  
+                
+          }catch (exc){
+             echo exc
+          }
+      }
 }
       
