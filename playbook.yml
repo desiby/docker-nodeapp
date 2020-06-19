@@ -1,0 +1,6 @@
+- hosts: kubemaster
+  remote_user: cloud_user
+  tasks:
+  - name: "run a pod"
+       command: 
+         cmd: ["kubectl", "run", "nodeapp", "--image=desiby/docker-nodeapp", "--generator=run-pod/v1"]
