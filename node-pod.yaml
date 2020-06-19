@@ -1,9 +1,0 @@
-apiVersion: apps/v1
-kind: pod
-metadata:
-  name: node-pod
-spec:
-  containers:
-  - name: node-hello
-    image: desiby/docker-nodeapp:latest
-    command: ["sh","-c","node","server.js"]
