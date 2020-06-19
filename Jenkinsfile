@@ -28,5 +28,15 @@ node {
             echo exc
          }
       }
+      
+      stage("run a pod"){
+          try{  
+            
+             ansiblePlaybook credentialsId: 'kube', inventory: '/etc/ansible/hosts', playbook: 'playbook.yml'   
+                
+          }catch (exc){
+             echo exc
+          }
+      }
 }
       
