@@ -2,4 +2,4 @@
   remote_user: ubuntu
   tasks:
   - name: "run a pod"
-    shell: kubectl run nodeapp --image=desiby/docker-nodeapp --generator=run-pod/v1
+    shell: sudo kubectl run nodeapp --image=desiby/docker-nodeapp --generator=run-pod/v1
