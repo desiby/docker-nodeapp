@@ -1,5 +1,5 @@
 - hosts: kubemaster
-  remote_user: cloud_user
+  remote_user: ubuntu
   tasks:
   - name: "run a pod"
     shell: kubectl run nodeapp --image=desiby/docker-nodeapp --generator=run-pod/v1
