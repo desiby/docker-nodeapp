@@ -6,4 +6,4 @@
   - name: "scale deployment"
     shell: sudo kubectl scale deployment nodeapp --replicas=3
   - name: "create service"
-    shell: sudo kubectl expose deploy nodeapp --name=helloservice --port=80 --type=NodePort
+    shell: sudo kubectl expose deploy nodeapp --name=helloservice --port=9000 --type=NodePort
