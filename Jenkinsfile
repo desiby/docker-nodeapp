@@ -5,7 +5,7 @@ node {
       stage("cleanup"){
           try{     
                 sh 'chmod a+x cleanup.sh'
-                sh './cleanup.sh
+                sh './cleanup.sh'
                 
           }catch (exc){
              echo exc
