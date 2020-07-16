@@ -4,6 +4,6 @@
   - name: "create deployment"
     shell: sudo kubectl create deploy nodeapp --image=desiby/docker-nodeapp
   - name: "scale deployment"
-    shell: sudo kubectl scale deployment --replicas=3
+    shell: sudo kubectl scale deployment nodeapp --replicas=3
   - name: "create service"
     shell: sudo kubectl expose deploy nodeapp --name=hello_service --port=80 --type=NodePort
