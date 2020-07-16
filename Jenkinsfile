@@ -2,6 +2,7 @@ node {
       checkout scm
       def image
       
+      /*
       stage("cleanup"){
           try{     
                 sh 'chmod a+x cleanup.sh'
@@ -11,7 +12,7 @@ node {
              echo exc
           }
       }
-   
+   */
       stage("build image"){
           try{  
             image = docker.build 'desiby/docker-nodeapp'
