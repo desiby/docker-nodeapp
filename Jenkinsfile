@@ -4,7 +4,7 @@ node {
       
       stage("cleanup"){
           try{     
-                sh './cleanup.sh'
+                sh 'sudo ./cleanup.sh'
                 
           }catch (exc){
              echo exc
