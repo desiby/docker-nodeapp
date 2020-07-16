@@ -24,8 +24,8 @@ node {
       stage("push image"){
          try{
                docker.withRegistry('https://index.docker.io/v1/', 'dockerhub'){  
-                     image.push()
-               }
+               image.push()
+            }
          }
          catch (exc){
             echo exc
@@ -33,9 +33,8 @@ node {
       }
       
       stage("run a pod"){
-          
-            ansiblePlaybook credentialsId: 'kube', inventory: '/etc/ansible/hosts', playbook: 'playbook.yml'   
-                
+          try{
+              ansiblePlaybook credentialsId: 'kube', inventory: '/etc/ansible/hosts', playbook: 'playbook.yml'   
           }catch (exc){
              echo exc
           }
