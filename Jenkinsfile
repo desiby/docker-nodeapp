@@ -2,17 +2,6 @@ node {
       checkout scm
       def image
       
-      /*
-      stage("cleanup"){
-          try{     
-                sh 'chmod a+x cleanup.sh'
-                sh './cleanup.sh'
-                
-          }catch (exc){
-             echo exc
-          }
-      }
-   */
       stage("build image"){
           try{  
             image = docker.build 'desiby/docker-nodeapp'
@@ -21,7 +10,6 @@ node {
           }
       }
       
-
       stage("push image"){
          try{
                docker.withRegistry('https://index.docker.io/v1/', 'dockerhub')  
