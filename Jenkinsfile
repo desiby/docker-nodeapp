@@ -25,8 +25,7 @@ node {
          try{
                docker.withRegistry('https://index.docker.io/v1/', 'dockerhub'){  
                image.push()
-         }
-         catch (exc){
+         }catch (exc){
             echo exc
          }
       }
