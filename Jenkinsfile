@@ -31,5 +31,14 @@ node {
              echo exc
           }
       }
+      
+      stage("cleanup"){
+          try{     
+                sh './cleanup.sh'
+                
+          }catch (exc){
+             echo exc
+          }
+      }
 }
       
