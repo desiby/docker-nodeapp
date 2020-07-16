@@ -33,12 +33,8 @@ node {
       }
       
       stage("run a pod"){
-          try{  
-                input{
-                   message "ready to deploy on kubernete cluster?"
-                   ok "yes"
-                }
-                ansiblePlaybook credentialsId: 'kube', inventory: '/etc/ansible/hosts', playbook: 'playbook.yml'   
+          
+            ansiblePlaybook credentialsId: 'kube', inventory: '/etc/ansible/hosts', playbook: 'playbook.yml'   
                 
           }catch (exc){
              echo exc
