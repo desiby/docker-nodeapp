@@ -1,5 +1,9 @@
 - hosts: kmaster
   remote_user: ubuntu
   tasks:
-  - name: "run a pod"
-    shell: sudo kubectl run nodeapp --image=desiby/docker-nodeapp --generator=run-pod/v1
+  - name: "create deployment"
+    shell: sudo kubectl create deploy nodeapp --image=desiby/docker-nodeapp --port=80
+  - name: "scale deployment"
+    shell: sudo kubectl scale deployment --replicas=3
+  - name: "create service"
+    shell: sudo kubectl expose deploy nodeapp --name=hello_service --port=9000 --type=NodePort
