@@ -1,6 +1,15 @@
 node {
       checkout scm
       def image
+      
+      stage("cleanup"){
+          try{     
+                sh './cleanup.sh'
+                
+          }catch (exc){
+             echo exc
+          }
+      }
    
       stage("build image"){
           try{  
@@ -32,13 +41,5 @@ node {
           }
       }
       
-      stage("cleanup"){
-          try{     
-                sh './cleanup.sh'
-                
-          }catch (exc){
-             echo exc
-          }
-      }
 }
       
