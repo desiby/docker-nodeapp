@@ -13,6 +13,7 @@ pipeline {
          success{
            agent{
              docker{
+               image 'desiby/docker-nodeapp'
                registryCredentialsId 'dockerhub'
                registryUrl 'https://registry.hub.docker.com'
              }
