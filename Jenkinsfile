@@ -1,8 +1,7 @@
 pipeline {
     environment { 
-        registry = 'desiby/docker-nodeapp' 
+        registry = "desiby/docker-nodeapp"
         registryCredential = 'dockerhub' 
-        dockerImage = '' 
     } 
     agent none
     
@@ -18,7 +17,7 @@ pipeline {
           agent any
             steps{
                script{
-                docker.withRegistry('https://https://index.docker.io/', 'dockerhub') {
+                docker.withRegistry('', registryCredential) {
                    def img = docker.build("desiby/docker-nodeapp")
                    img.push()
                 }
