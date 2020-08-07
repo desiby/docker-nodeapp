@@ -1,4 +1,9 @@
 pipeline {
+    environment { 
+        registry = 'desiby/docker-nodeapp' 
+        registryCredential = 'dockerhub' 
+        dockerImage = '' 
+    } 
     agent none
     
     stages {
