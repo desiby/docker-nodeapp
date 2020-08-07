@@ -1,6 +1,6 @@
 pipeline {
     agent none
-    }
+    
     stages {
         stage('Build') { 
           agent { Dockerfile true } 
