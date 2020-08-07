@@ -10,9 +10,18 @@ pipeline {
         }
     }
     post {
-       success {
-          echo 'build successful!'
+      agent 
+       docker{
+          registryCredentialsId 'dockerhub'
+          registryUrl 'https://registry.hub.docker.com'
        }
+         success{
+             script{
+                def img = docker.build("desiby/docker-nodeapp")
+                img.push()
+             }
+         }
+       
        unsuccessful {
           echo 'failed'
        } 
