@@ -11,13 +11,6 @@ pipeline {
     }
     post {
          success{
-           agent{
-             docker{
-               image 'desiby/docker-nodeapp'
-               registryCredentialsId 'dockerhub'
-               registryUrl 'https://registry.hub.docker.com'
-             }
-           }
              script{
                 def img = docker.build("desiby/docker-nodeapp")
                 img.push()
