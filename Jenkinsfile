@@ -9,7 +9,7 @@ pipeline {
             }
         }
         
-        stage('Push')
+        stage('Push'){
           agent any
             steps{
                script{
@@ -19,6 +19,7 @@ pipeline {
                 }
              }
             }
+       }
     }
     post {
          success{
