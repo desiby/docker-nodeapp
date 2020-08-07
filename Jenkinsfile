@@ -12,7 +12,7 @@ pipeline {
     post {
          success{
              script{
-                docker.withRegistry('https://index.docker.io/', 'dockerhub') {
+                docker.withRegistry('https://https://hub.docker.com/', 'dockerhub') {
                    def img = docker.build("desiby/docker-nodeapp")
                    img.push()
                 }
