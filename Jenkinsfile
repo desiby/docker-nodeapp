@@ -10,12 +10,13 @@ pipeline {
         }
     }
     post {
-      agent 
-       docker{
-          registryCredentialsId 'dockerhub'
-          registryUrl 'https://registry.hub.docker.com'
-       }
          success{
+           agent{
+             docker{
+               registryCredentialsId 'dockerhub'
+               registryUrl 'https://registry.hub.docker.com'
+             }
+           }
              script{
                 def img = docker.build("desiby/docker-nodeapp")
                 img.push()
