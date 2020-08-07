@@ -2,15 +2,15 @@ pipeline {
     agent none
     
     stages {
-        stage('Build') { 
-          agent { Dockerfile true } 
+        stage('Build'){
+          agent { dockerfile true }    
             steps {
                 echo 'building docker image..'
             }
         }
     }
     post {
-       sucess {
+       success {
           echo 'build successful!'
        }
        unsuccessful {
