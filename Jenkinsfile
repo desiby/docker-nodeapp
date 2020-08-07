@@ -8,15 +8,22 @@ pipeline {
                 echo 'building docker image..'
             }
         }
-    }
-    post {
-         success{
-             script{
+        
+        stage('Push)
+          agent any
+            steps{
+               script{
                 docker.withRegistry('https://https://hub.docker.com/', 'dockerhub') {
                    def img = docker.build("desiby/docker-nodeapp")
                    img.push()
                 }
              }
+            }
+    }
+    post {
+         success{
+             script{
+              echo 'success
          }
        
        unsuccessful {
