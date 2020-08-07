@@ -23,7 +23,7 @@ pipeline {
     post {
          success{
              script{
-              echo 'success
+              echo 'success'
          }
        
        unsuccessful {
