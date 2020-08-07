@@ -18,7 +18,7 @@ pipeline {
             steps{
                script{
                 docker.withRegistry('', registryCredential) {
-                   def img = docker.build("desiby/docker-nodeapp")
+                   def img = docker.build registry + ":$BUILD_NUMBER"
                    img.push()
                 }
              }
