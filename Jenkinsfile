@@ -2,6 +2,7 @@ pipeline {
     environment { 
         registry = "desiby/docker-nodeapp"
         registryCredential = 'dockerhub' 
+        tagVersion = ""
     } 
     agent none
     
@@ -20,6 +21,7 @@ pipeline {
                 docker.withRegistry('', registryCredential) {
                    def img = docker.build registry + ":$BUILD_NUMBER"
                    img.push()
+                    tagVersion = "$BUILD_NUMBER"
                 }
              }
             }
@@ -28,6 +30,7 @@ pipeline {
     post {
          success{
               echo 'success'
+              sh 
          }
        
        unsuccessful {
