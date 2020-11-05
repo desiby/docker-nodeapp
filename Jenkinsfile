@@ -47,11 +47,8 @@ pipeline {
     //remove old build
     post {
          success{
-              echo 'success'
               sh "docker rmi $registry:$BUILD_NUMBER"
-              
-              
-             
+              sh "successfuly removed image from disk!!!"    
          }
        
        unsuccessful {
