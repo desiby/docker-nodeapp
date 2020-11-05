@@ -12,13 +12,14 @@ pipeline {
     agent any
     
     stages {
+        //build docker image
         stage('Build'){
           agent { dockerfile true }    
             steps {
                 echo 'building docker image..'
             }
         }
-        
+        //push docker image to dockerhub registry
         stage('Push'){
           agent any
             steps{
@@ -31,8 +32,8 @@ pipeline {
                }
             }
        }
-       
-       stage('SSH Declarative Example') {
+       // deploy new build on kubernetes cluster via ssh
+       stage('Deploy on Kubernetes') {
    
             steps {
                 script{
@@ -43,6 +44,7 @@ pipeline {
        }
 
     }
+    //remove old build
     post {
          success{
               echo 'success'
