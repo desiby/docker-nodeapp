@@ -3,6 +3,7 @@ pipeline {
         registry = "desiby/docker-nodeapp"
         registryCredential = 'dockerhub' 
         tagVersion = ""
+        
     } 
     agent none
     
@@ -30,7 +31,19 @@ pipeline {
     post {
          success{
               echo 'success'
-              sh 
+              def remote = [:]
+              remote.name = "master"
+              remote.host = "34.227.176.192"
+              remote.allowAnyHosts = true
+              withCredentials([sshUserPrivateKey(credentialsId: 'myssh-cred', passphraseVariable: '', usernameVariable: 'userName')]) {
+              remote.user = userName
+              stage("SSH Steps Rocks!") {
+              sshCommand remote: remote, command: 'touch hello'
+             
+        }
+    } 
+             
+             
          }
        
        unsuccessful {
