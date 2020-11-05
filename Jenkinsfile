@@ -1,4 +1,4 @@
-def remote = [name: 'ip-172-31-95-164.ec2.internal', host: '34.227.25.106', user: 'ec2-user', 
+def remote = [name: 'ip-172-31-95-164.ec2.internal', host: '18.212.19.131', user: 'ec2-user', 
 password: 'qwerty', allowAnyHosts: true]
 
 pipeline {
