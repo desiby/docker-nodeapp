@@ -5,7 +5,7 @@ pipeline {
         tagVersion = ""
         
     } 
-    agent none
+    agent any
     
     stages {
         stage('Build'){
