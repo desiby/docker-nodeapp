@@ -31,10 +31,8 @@ pipeline {
     post {
          success{
               echo 'success'
-               script{
-                sh "touch hello"
-               }
-    } 
+              
+     
              
              
          }
