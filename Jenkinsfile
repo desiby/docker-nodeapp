@@ -31,15 +31,14 @@ pipeline {
 
        stage('Deploy on Kubernetes cluster'){
           agent any
-            steps{
-            def remote = [:]
+           def remote = [:]
             remote.name = 'ip-172-31-95-164.ec2.internal'
             remote.host = '34.227.25.106'
             remote.user = 'ec2-user'
             remote.password = 'qwerty'
             remote.allowAnyHosts = true
-            
-                sshCommand remote: remote, command: "touch hello"
+            steps{
+             sshCommand remote: remote, command: "touch hello"
             }
 
        }
