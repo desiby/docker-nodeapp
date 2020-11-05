@@ -50,9 +50,6 @@ pipeline {
               //sh "docker rmi $registry:$BUILD_NUMBER"
               sh "SUCCESS!!!"    
          }
-       
-       unsuccessful {
-          echo 'failed'
-       } 
+        
     }
 }
