@@ -31,7 +31,7 @@ pipeline {
     post {
          success{
               echo 'success'
-              sh "ssh -i gh.pem ec2-user@34.227.176.192"
+              sh "ssh -i /home/dezbill/gh.pem ec2-user@34.227.176.192"
               sh "touch hellllo"
               
      
