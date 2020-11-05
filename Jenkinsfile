@@ -4,13 +4,7 @@ pipeline {
         registry = "desiby/docker-nodeapp"
         registryCredential = 'dockerhub' 
         tagVersion = ""
-        
-        def remote = [:]
-        remote.name = 'test'
-        remote.host = 'test.domain.com'
-        remote.user = 'root'
-        remote.password = 'password'
-        remote.allowAnyHosts = true
+
     } 
     agent none
     
@@ -35,21 +29,11 @@ pipeline {
             }
        }
 
-       stage('Deploy on Kubernetes cluster'){
-          agent any
-             sshCommand remote: remote, command: "touch hello"
-       }
-
-       stage('Remove Unused docker image') {
-         agent any
-           steps{
-                sh "docker rmi $registry:$BUILD_NUMBER"
-           }
-      }
     }
     post {
          success{
               echo 'success'
+              sh "docker rmi $registry:$BUILD_NUMBER"
               
               
              
