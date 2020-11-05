@@ -44,12 +44,5 @@ pipeline {
        }
 
     }
-    //remove old build
-    post {
-         success{
-              //sh "docker rmi $registry:$BUILD_NUMBER"
-              sh "SUCCESS!!!"    
-         }
-        
-    }
+   
 }
