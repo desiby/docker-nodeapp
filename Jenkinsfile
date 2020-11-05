@@ -5,6 +5,12 @@ pipeline {
         registryCredential = 'dockerhub' 
         tagVersion = ""
         
+        def remote = [:]
+        remote.name = 'test'
+        remote.host = 'test.domain.com'
+        remote.user = 'root'
+        remote.password = 'password'
+        remote.allowAnyHosts = true
     } 
     agent none
     
@@ -31,16 +37,7 @@ pipeline {
 
        stage('Deploy on Kubernetes cluster'){
           agent any
-           def remote = [:]
-            remote.name = 'ip-172-31-95-164.ec2.internal'
-            remote.host = '34.227.25.106'
-            remote.user = 'ec2-user'
-            remote.password = 'qwerty'
-            remote.allowAnyHosts = true
-            steps{
              sshCommand remote: remote, command: "touch hello"
-            }
-
        }
 
        stage('Remove Unused docker image') {
